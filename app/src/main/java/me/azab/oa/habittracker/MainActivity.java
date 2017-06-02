@@ -26,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
      *  Add new habit to the database
      *
      * @param habitName name of the habit to be added
+     * @param habitCount number of habit repeation
      */
-    private void addHabit(String habitName){
+    private void addHabit(String habitName, int habitCount){
 
         // Get database object to write on it
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
@@ -35,20 +36,24 @@ public class MainActivity extends AppCompatActivity {
         // Create contentValues object
         ContentValues values = new ContentValues();
         values.put(HabitEntry.HABIT_COLUMN_NAME,habitName);
+        values.put(HabitEntry.HABIT_COLUMN_COUNT,habitCount);
 
         // Insertion result
         long result = db.insert(HabitEntry.TABLE_NAME,null,values);
-        String message = "Error saving habit";
+        String message = getString(R.string.error_message);
         if (result > -1) {
-            message = "Habit saved with id : " + result;
+            message = getString(R.string.success_message) + result;
         }
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
+
     /**
-     *  Select all record from database
+     * Method gets all records in database as cursor
+     *
+     * @return cursor database all records
      */
-    private void readAllHabits(){
+    private Cursor readAllHabits(){
 
         // Get database object to write on it
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
@@ -56,6 +61,6 @@ public class MainActivity extends AppCompatActivity {
         // to get a Cursor that contains all rows from the habit table.
         Cursor cursor = db.query(HabitEntry.TABLE_NAME, null, null, null, null, null, null);
 
-
+        return cursor;
     }
 }

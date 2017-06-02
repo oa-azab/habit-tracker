@@ -20,7 +20,7 @@ public class HabitDbHelper extends SQLiteOpenHelper {
     public final static String CREATE_DATABASE = "CREATE TABLE " + HabitEntry.TABLE_NAME + " ( "
             + HabitEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + HabitEntry.HABIT_COLUMN_NAME + " TEXT, "
-            + HabitEntry.HABIT_COLUMN_COUNT + " INTEGER NOT NULL DEFAULT 0);";
+            + HabitEntry.HABIT_COLUMN_COUNT + " INTEGER NOT NULL DEFAULT 1);";
 
     public HabitDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
