@@ -24,7 +24,9 @@ public final class HabitContract {
         public static final String TABLE_NAME = "habits";
 
         // Column names
-        public static final String _ID = BaseColumns._ID;
+        public final static String _ID = BaseColumns._ID;
         public final static String HABIT_COLUMN_NAME = "name";
+        public final static String HABIT_COLUMN_COUNT = "count";
+
     }
 }
