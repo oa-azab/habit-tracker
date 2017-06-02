@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Habit Tracker</string>
+    <string name="error_message">Error saving habit</string>
+    <string name="success_message">Habit saved with id :</string>
 </resources>
